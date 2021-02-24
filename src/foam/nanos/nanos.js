@@ -508,6 +508,8 @@ FOAM_FILES([
   { name: "foam/nanos/crunch/ui/CapableView" },
   { name: 'foam/nanos/crunch/ui/UCJView' },
   { name: "foam/nanos/crunch/ui/PrerequisiteAwareWizardlet" },
+  { name: 'foam/nanos/crunch/AgentCapabilityJunctionDAOSummaryView' },
+
   //boxes
   { name: "foam/nanos/crunch/box/CrunchClientBox" },
   { name: "foam/nanos/crunch/box/CrunchClientReplyBox" },
