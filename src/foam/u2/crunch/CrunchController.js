@@ -157,6 +157,7 @@ foam.CLASS({
         .remove('CheckRootIdAgent')
         .remove('CheckPendingAgent')
         .remove('CheckNoDataAgent')
+        .remove('LoadTopConfig')
 
     },
 
