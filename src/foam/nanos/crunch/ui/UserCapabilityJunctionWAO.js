@@ -18,6 +18,14 @@ foam.CLASS({
     'crunchService'
   ],
 
+  properties: [
+    {
+      class: 'FObjectProperty',
+      of: 'foam.nanos.auth.Subject',
+      name: 'subject'
+    }
+  ],
+
   methods: [
     function save(wizardlet) {
       if ( ! wizardlet.isAvailable ) return Promise.resolve();
@@ -38,9 +46,12 @@ foam.CLASS({
       });
     },
     function load(wizardlet) {
-      return this.crunchService.getJunction(
+      let p = this.subject ? this.crunchService.getJunctionFor(
+        null, wizardlet.capability.id, this.subject.user, this.subject.realUser
+      ) : this.crunchService.getJunction(
         null, wizardlet.capability.id
-      ).then(ucj => {
+      );
+      return p.then(ucj => {
         this.load_(wizardlet, ucj);
       });
     },
@@ -59,7 +70,7 @@ foam.CLASS({
         if ( prop ) prop.set(loadedData, wizardlet.capability);
 
       // Finally, apply new data to wizardlet
-      wizardlet.data = loadedData;
+      wizardlet.data = loadedData.clone(this.__subContext__);
     }
   ]
 });
