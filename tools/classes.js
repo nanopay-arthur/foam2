@@ -337,6 +337,7 @@ var classes = [
   'foam.nanos.auth.DeletedAwareDAOTest',
   'foam.nanos.auth.UserAndGroupAuthService',
   'foam.nanos.auth.EnabledCheckAuthService',
+  'foam.nanos.auth.CommonPassword',
   'foam.nanos.http.HttpParameters',
   'foam.nanos.http.DefaultHttpParameters',
   'foam.nanos.http.SendErrorHandler',
@@ -850,6 +851,7 @@ var classes = [
   'foam.nanos.crunch.predicate.CapabilityPrerequisitesGranted',
   'foam.nanos.crunch.predicate.StatusChangedTo',
   'foam.nanos.crunch.predicate.IsAgent',
+  'foam.nanos.crunch.predicate.CapabilityJunctionTransitionToStatus',
 
   //authservice
   'foam.nanos.auth.CapabilityAuthService',
