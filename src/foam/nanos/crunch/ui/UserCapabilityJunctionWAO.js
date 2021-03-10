@@ -29,13 +29,24 @@ foam.CLASS({
   methods: [
     function save(wizardlet) {
       if ( ! wizardlet.isAvailable ) return Promise.resolve();
-      return this.crunchService.updateJunction( null,
+      let p = this.subject ? this.crunchService.updateJunctionFor(
+        null, wizardlet.capability.id, wizardlet.data, null,
+        this.subject.user, this.subject.realUser
+      ) : this.crunchService.updateJunction(null,
         wizardlet.capability.id, wizardlet.data, null
-      ).then((ucj) => {
+      );
+      return p.then((ucj) => {
         this.crunchService.pub('grantedJunction');
         this.load_(wizardlet, ucj);
         return ucj;
       });
+      // return this.crunchService.updateJunction( null,
+      //   wizardlet.capability.id, wizardlet.data, null
+      // ).then((ucj) => {
+      //   this.crunchService.pub('grantedJunction');
+      //   this.load_(wizardlet, ucj);
+      //   return ucj;
+      // });
     },
     function cancel(wizardlet) {
       return this.crunchService.updateJunction( null,
